@@ -44,6 +44,7 @@ class Service():
         info_obj = Service.get_info_from_db(script_id)
         Container().run_container(info_obj.container_id)
         info_obj.state = utils.ContainerState.RUNNING.name
+        Service.update_info_in_db(info_obj)
         return info_obj
     
     @staticmethod

@@ -18,43 +18,54 @@ def post_file():
 def create_container(script_id):
     infoObject = helperService.create_container(script_id)
     print(infoObject.__dict__)
-    return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":infoObject.state})
+    state = helperService.get_container_status(script_id)
+    return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":state})
 
 @app.route('/api/v1/scripts/start-container/<script_id>',methods=['GET'])
 def start_container(script_id):
     infoObject = helperService.start_container(script_id)
     print(infoObject.__dict__)
-    return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":infoObject.state})
+    state = helperService.get_container_status(script_id)
+    return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":state})
 
 @app.route('/api/v1/scripts/read-logs/<script_id>',methods=['GET'])
 def read_logs(script_id):
     infoObject,logs = helperService.read_logs(script_id)
     print(logs)
     print(infoObject.__dict__)
-    return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":infoObject.state,"logs":logs})
+    state = helperService.get_container_status(script_id)
+    return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":state,"logs":logs})
 
 @app.route('/api/v1/scripts/stop-container/<script_id>',methods=['GET'])
 def stop_container(script_id):
     infoObject = helperService.stop_container(script_id)
     print(infoObject.__dict__)
-    return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":infoObject.state})
+    state = helperService.get_container_status(script_id)
+    return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":state})
 
 @app.route('/api/v1/scripts/pause-container/<script_id>',methods=['GET'])
 def pause_container(script_id):
     infoObject = helperService.pause_container(script_id)
     print(infoObject.__dict__)
-    return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":infoObject.state})
+    state = helperService.get_container_status(script_id)
+    return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":state})
 
 @app.route('/api/v1/scripts/resume-container/<script_id>',methods=['GET'])
 def unpause_container(script_id):
     infoObject = helperService.unpause_container(script_id)
     print(infoObject.__dict__)
-    return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":infoObject.state})
+    state = helperService.get_container_status(script_id)
+    return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":state})
 
 @app.route('/api/v1/scripts/container-stats/<script_id>',methods=['GET'])
 def container_stats(script_id):
     state = helperService.get_container_status(script_id)
     return json.dumps({"response":{"script_id":script_id},"container_state":state})
+
+@app.route('/api/v1/scripts/delete-container/<script_id>',methods=['GET'])
+def delete_container(script_id):
+    infoObject = helperService.delete_container(script_id)
+    return json.dumps({"response":{"script_id":script_id},"container_state":infoObject.state})
 
 
 
