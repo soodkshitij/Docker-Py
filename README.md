@@ -1,5 +1,9 @@
 # assignment_2
 
+#### --> On the fly create docker containers.
+#### --> Remote script execution inside created containers.
+#### --> API's to create, run, pause, resume, stop, inspect and read remote script logs.
+
 ##### Build flask-lambda image using docker file.To use any other image change config.ini
 ##### Build egg or add project in pypath
 ##### Install docker sdk, flask and rocksdb
