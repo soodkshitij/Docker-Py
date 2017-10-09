@@ -1,6 +1,8 @@
 # assignment_2
-<h4>Post file</h4>
+# Post file
+``sh
 curl -i -X POST -H "Content-Type: multipart/form-data" -F "data=@test.py" http://localhost:5000/api/v1/scripts
+``
 Response:
 {"response": {"script_id": 776}}
 
