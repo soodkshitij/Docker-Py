@@ -1,4 +1,9 @@
 # assignment_2
+
+##### Build flask-lambda image using docker file.To use any other image change config.ini
+##### Build egg or add project in pypath
+##### Install docker sdk, flask and rocksdb
+
 ### Post file
 ```bash
 curl -i -X POST -H "Content-Type: multipart/form-data" -F "data=@test.py" http://localhost:5000/api/v1/scripts
