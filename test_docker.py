@@ -20,14 +20,16 @@ x = c.create_container('flask-lambda',tty=True,detach=True,
                 ]),command="python3.6 /usr/bin/src/t.py")    
 print(x)
 c.start(x['Id'])
+c.stop(x['Id'])
+print(c.inspect_container("1")['State']['Status'])
 sleep(1)
 c.pause(x['Id'])
-print(c.stats(x['Id'],stream=False))
+print(c.inspect_container(x['Id']))
 sleep(10)
 c.unpause(x['Id'])
-print(c.stats(x['Id']))
+print(c.inspect_container(x['Id']))
 sleep(10)
-c.stop(x['Id'])
+
 #c.remove_container(x['Id'])
 
 

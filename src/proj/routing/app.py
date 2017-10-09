@@ -51,6 +51,11 @@ def unpause_container(script_id):
     print(infoObject.__dict__)
     return json.dumps({"response":{"script_id":infoObject.script_id},"container_state":infoObject.state})
 
+@app.route('/api/v1/scripts/container-stats/<script_id>',methods=['GET'])
+def container_stats(script_id):
+    state = helperService.get_container_status(script_id)
+    return json.dumps({"response":{"script_id":script_id},"container_state":state})
+
 
 
 if __name__ == '__main__':

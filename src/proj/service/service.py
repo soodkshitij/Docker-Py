@@ -25,6 +25,12 @@ class Service():
     
     
     @staticmethod
+    def get_container_status(script_id):
+        info_obj = Service.get_info_from_db(script_id)
+        stats = Container().get_container_stats(info_obj.container_id)
+        return stats['State']['Status']
+    
+    @staticmethod
     def create_container(script_id):
         info_obj = Service.get_info_from_db(script_id)
         container = Container().create_container(info_obj.file_name)

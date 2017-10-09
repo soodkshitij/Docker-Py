@@ -35,3 +35,7 @@ class Container():
         
     def unpause_container(self,container_id):
         self._client.unpause(container_id)
+        
+    def get_container_stats(self,container_id):
+        return self._client.inspect_container(container_id)
+    
